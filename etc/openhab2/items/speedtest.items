@@ -1,0 +1,8 @@
+Group gSpeedtest (All)
+String   SpeedtestSummary    "Speedtest [%s]"                <"network_icon">
+Number   SpeedtestResultPing "Ping [%.3f ms]"                <"next_5_icon">
+Number   SpeedtestResultDown "Downlink [%.2f Mbit/s]"        <"download_icon">
+Number   SpeedtestResultUp   "Uplink [%.2f Mbit/s]"          <"upload_icon">
+String   SpeedtestRunning    "Speedtest running ... [%s]"    <"new_icon">
+Switch   SpeedtestRerun      "Manual start"                  <"reload_2_icon">
+DateTime SpeedtestResultDate "Last Respectively [%1$td.%1$tm.%1$tY, %1$tH:%1$tM Clock]" <"problem_4_icon">

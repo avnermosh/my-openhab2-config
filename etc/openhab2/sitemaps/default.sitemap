@@ -1,0 +1,28 @@
+sitemap default label="My home automation" {
+    Frame label="Speedtest" {
+
+        Text item=SpeedtestSummary {
+            Frame label="Results" {
+                Text item=SpeedtestResultDown
+                Text item=SpeedtestResultUp
+                Text item=SpeedtestResultPing
+            }
+            Frame label="Control" {
+                Text item=SpeedtestResultDate
+                Text item=SpeedtestRunning label="Speedtest [%s]" visibility=[SpeedtestRunning != "-"]
+                Switch item=SpeedtestRerun mappings=[ON="Start"]
+            }
+            Frame label="Statistics" {
+                Text label="..." icon="analytics_8_icon"
+            }
+        }
+    }
+    Frame label="Fibaro FGMS-001" {
+        Text item=ZwaveEye1Temp
+        Text item=ZwaveEye1Lux
+        Text item=ZwaveEye1Battery
+        Text item=ZwaveEye1Seismic
+        Switch item=ZwaveEye1AlarmBurglar
+        Switch item=ZwaveEye1AlarmTamper
+    }
+}

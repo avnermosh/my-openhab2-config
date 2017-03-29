@@ -1,0 +1,10 @@
+Group gTemperature  (All)
+Group ZwaveEye1  (All)
+
+// Group  ZwaveEye1                    "FIBARO_FGMS-001"                                  (Zwave)
+Number ZwaveEye1Lux                 "FIBARO_FGMS-001 [%.2f Lux]"        <sun>          (ZwaveEye1) { channel="zwave:device:02710de3:node6:sensor_luminance" }
+Number ZwaveEye1Battery             "FIBARO_FGMS-001 [%d %%]"           <battery>      (ZwaveEye1) { channel="zwave:device:02710de3:node6:battery-level" }
+Number ZwaveEye1Temp                "FIBARO_FGMS-001 [%.1f C]"          <temperature>  (ZwaveEye1) { channel="zwave:device:02710de3:node6:sensor_temperature" }
+Number ZwaveEye1Seismic             "FIBARO_FGMS-001 Seismic [%f]"                     (ZwaveEye1) { channel="zwave:device:02710de3:node6:sensor_seismicintensity" }
+Switch ZwaveEye1AlarmBurglar        "FIBARO_FGMS-001 Motion Alarm [%s]"      <fire>         (ZwaveEye1) { channel="zwave:device:02710de3:node6:alarm_burglar" }
+Switch ZwaveEye1AlarmTamper         "FIBARO_FGMS-001 Tamper Alarm [%s]" <fire>         (ZwaveEye1) { channel="zwave:device:02710de3:node6:alarm_tamper" }

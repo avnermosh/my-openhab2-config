@@ -1,2 +1,2 @@
 # openhab2
-openhab2 configuration
+my openhab2 configuration
