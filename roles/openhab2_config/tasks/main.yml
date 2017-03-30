@@ -5,30 +5,110 @@
 - name: create openHAB configrations directories
   file: path={{ openhab_configuration_dir}}/{{ item }} state=directory
   become: true
-  # become_user: avner
   become_user: openhab
   become_method: sudo
   with_items:
+    - persistence
+    - icons/classic
     - items
-    # - persistence
-    # - transform
-    # - rules
-    # - scripts
-    # - sitemaps
-    # - templates
-    # - services
-    # - things
+    - transform
+    - rules
+    - scripts
+    - sitemaps
+    - services
+    - html
+    - icon
+    - sounds
+    - things
 
-- name: sync setup into config
-  template: dest={{ openhab_configuration_dir }}/{{item}} src=../templates/configurations/{{item}}
+    
+# ok with "sudo ansible-playbook  playbook.yml  -i hosts  -K -vvvv  --connection=local  --ask-sudo-pass"
+# - copy: src={{ item }} dest={{ openhab_configuration_dir }}/persistence owner='openhab' group='openhab' mode=0755
+- copy: src={{ item }} dest={{ openhab_configuration_dir }}/persistence owner='openhab' group='openhab'
+  with_fileglob:
+    - ../templates/configurations/persistence/*
+
+- copy: src={{ item }} dest={{ openhab_configuration_dir }}/icons/classic owner='openhab' group='openhab'
+  with_fileglob:
+    - ../templates/configurations/icons/classic/*
+
+- copy: src={{ item }} dest={{ openhab_configuration_dir }}/items owner='openhab' group='openhab'
+  with_fileglob:
+    - ../templates/configurations/items/*
+
+- copy: src={{ item }} dest={{ openhab_configuration_dir }}/transform owner='openhab' group='openhab'
+  with_fileglob:
+    - ../templates/configurations/transform/*
+
+- copy: src={{ item }} dest={{ openhab_configuration_dir }}/rules owner='openhab' group='openhab'
+  with_fileglob:
+    - ../templates/configurations/rules/*
+
+- copy: src={{ item }} dest={{ openhab_configuration_dir }}/scripts owner='openhab' group='openhab'
+  with_fileglob:
+    - ../templates/configurations/scripts/*
+
+- copy: src={{ item }} dest={{ openhab_configuration_dir }}/sitemaps owner='openhab' group='openhab'
+  with_fileglob:
+    - ../templates/configurations/sitemaps/*
+
+- copy: src={{ item }} dest={{ openhab_configuration_dir }}/services owner='openhab' group='openhab'
+  with_fileglob:
+    - ../templates/configurations/services/*
+
+- copy: src={{ item }} dest={{ openhab_configuration_dir }}/html owner='openhab' group='openhab'
+  with_fileglob:
+    - ../templates/configurations/html/*
+
+- copy: src={{ item }} dest={{ openhab_configuration_dir }}/icon owner='openhab' group='openhab'
+  with_fileglob:
+    - ../templates/configurations/icon/*
+
+- copy: src={{ item }} dest={{ openhab_configuration_dir }}/sounds owner='openhab' group='openhab'
+  with_fileglob:
+    - ../templates/configurations/sounds/*
+
+- copy: src={{ item }} dest={{ openhab_configuration_dir }}/things owner='openhab' group='openhab'
+  with_fileglob:
+    - ../templates/configurations/things/*
+
+
+
+- name: sync openhab java opts
   become: yes
-  become_user: openhab
-  with_items:
-    - items/speedtest.items
-    - items/fibaro.items
-    # - items/readme.txt
+  template: dest="/etc/default/openhab2" src="../templates/openhab2"
 
 
-# - name: sync openhab java opts
+
+
+
+
+
+
+
+    
+# - name: Your copy task
+#   copy: src={{ item.src }} dest={{ item.dest }}
+#   become_user: openhab
+#   become_method: sudo
+#   with_items:
+#     - { src: '../templates/configurations/icons/classic/readme.txt', dest: '{{ openhab_configuration_dir }}/icons/classic/readme.txt' }
+#     - { src: '../templates/configurations/icons/classic/analytics_8_icon.png', dest: '{{ openhab_configuration_dir }}/icons/classic/analytics_8_icon.png' }
+
+
+
+
+
+
+# - name: sync setup into config
+#   template: dest={{ openhab_configuration_dir }}/{{item}} src=../templates/configurations/{{item}}
 #   become: yes
-#   template: dest="/etc/default/openhab2" src="../templates/openhab2"
+#   become_user: openhab
+#   with_items:
+#     - persistence/readme.txt
+#     - persistence/rrd4j.persist
+#     - icons/classic/readme.txt
+#     - icons/classic/analytics_8_icon.png
+# ...
+    
+
