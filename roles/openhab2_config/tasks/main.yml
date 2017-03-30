@@ -23,12 +23,15 @@
 
     
 # ok with "sudo ansible-playbook  playbook.yml  -i hosts  -K -vvvv  --connection=local  --ask-sudo-pass"
+# Example of copy command with setting mode for the file
 # - copy: src={{ item }} dest={{ openhab_configuration_dir }}/persistence owner='openhab' group='openhab' mode=0755
 - copy: src={{ item }} dest={{ openhab_configuration_dir }}/persistence owner='openhab' group='openhab'
   with_fileglob:
     - ../templates/configurations/persistence/*
 
-- copy: src={{ item }} dest={{ openhab_configuration_dir }}/icons/classic owner='openhab' group='openhab'
+# Example of copy command with ansible name for the task
+- name: Copy content of dir icons/classic
+  copy: src={{ item }} dest={{ openhab_configuration_dir }}/icons/classic owner='openhab' group='openhab'
   with_fileglob:
     - ../templates/configurations/icons/classic/*
 
@@ -77,12 +80,6 @@
 - name: sync openhab java opts
   become: yes
   template: dest="/etc/default/openhab2" src="../templates/openhab2"
-
-
-
-
-
-
 
 
 
