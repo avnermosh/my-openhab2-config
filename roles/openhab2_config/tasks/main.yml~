@@ -1,0 +1,22 @@
+- name: See if configurations is a directory (then we nuke it next)
+  shell: "[ -d {{ openhab_configuration_dir  }}] && echo 'Directory' || echo ''"
+  register: is_directory
+
+- name: create openHAB configrations directories
+  file: path={{ openhab_configuration_dir}}/{{ item }} state=directory
+  become: true
+  become_user: openhab
+  with_items:
+    - items
+    - persistence
+    - transform
+    - rules
+    - scripts
+    - sitemaps
+    - templates
+    - services
+    - things
+
+- name: sync openhab java opts
+  become: yes
+  template: dest="/etc/default/openhab2" src="../templates/openhab2"
