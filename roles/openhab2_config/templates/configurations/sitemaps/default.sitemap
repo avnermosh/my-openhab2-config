@@ -23,8 +23,8 @@ sitemap default label="My home automation" {
         Text item=ZwaveEye1Battery
         Text item=ZwaveEye1Seismic
         Switch item=ZwaveEye1AlarmBurglar
-        Switch item=ZwaveEye1AlarmTamper
         Switch item=ZwaveEye1SensorBinary
+        Switch item=ZwaveEye1AlarmTamper
         Switch item=ZwaveEye1AlarmGeneral
     }
 }
