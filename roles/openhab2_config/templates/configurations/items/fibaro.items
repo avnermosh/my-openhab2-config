@@ -8,6 +8,9 @@ Number ZwaveEye1Temp                "FIBARO_FGMS-001 [%.1f C]"          <tempera
 Number ZwaveEye1Seismic             "FIBARO_FGMS-001 Seismic [%f]"                     (ZwaveEye1) { channel="zwave:device:02710de3:node6:sensor_seismicintensity" }
 Switch ZwaveEye1AlarmMotion         "FIBARO_FGMS-001 Alarm Motion [%s]"  <fire>        (ZwaveEye1) { channel="zwave:device:02710de3:node6:alarm_motion" }
 Switch ZwaveEye1AlarmBurglar        "FIBARO_FGMS-001 Alarm Burgler [%s]" <fire>        (ZwaveEye1) { channel="zwave:device:02710de3:node6:alarm_burglar" }
+
 Switch ZwaveEye1AlarmTamper         "FIBARO_FGMS-001 Alarm Tamper [%s]"  <fire>        (ZwaveEye1) { channel="zwave:device:02710de3:node6:alarm_tamper" }
+
 Switch ZwaveEye1SensorBinary        "FIBARO_FGMS-001 Sensor Binary [%s]"               (ZwaveEye1) { channel="zwave:device:02710de3:node6:sensor_binary" }
 Switch ZwaveEye1AlarmGeneral        "FIBARO_FGMS-001 Alarm General [%s]" <fire>        (ZwaveEye1) { channel="zwave:device:02710de3:node6:alarm_general" }
+
